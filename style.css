@@ -1,0 +1,21 @@
+* 
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+h1 
+{
+    margin-top: 20px;
+    text-align: center;
+    font-family: Arial;
+}
+
+.scene1
+{
+    margin-top: 30px;
+    width: 100vw;
+    height: 800px;
+    display: block;
+}
