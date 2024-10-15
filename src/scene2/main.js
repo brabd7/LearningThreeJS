@@ -5,6 +5,8 @@ import { animate } from './animate';
 import { resize } from './resize';
 import { addObjects } from './objects';
 import { Player } from './player';
+import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls.js'; // Vérouiller le pointeur de la souris afin que l'utilisateur puisse tourner à 360 degrés dans le jeu
+
 
 // Créer la scène, la caméra et le rendu
 const scene = createScene();

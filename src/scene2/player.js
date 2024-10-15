@@ -2,17 +2,16 @@ export class Player {
     constructor(camera)
     {
         this.camera = camera;
+
+        // Variables pour les mouvements
         this.moveForward = false;
         this.moveBackward = false;
         this.moveRight = false;
         this.moveLeft = false;
         this.moveSpeed = 0.2;
-
+        
         // Mouvement
         this.activateMove();
-
-        // Rotation de la caméra
-        this.rotationCamera();
     }
 
     activateMove()
@@ -66,14 +65,6 @@ export class Player {
         if (this.moveLeft) this.camera.position.x -= this.moveSpeed;
         if (this.moveRight) this.camera.position.x += this.moveSpeed;
         if (this.moveBackward) this.camera.position.z += this.moveSpeed;
-    }
-
-    rotationCamera()
-    {
-        document.addEventListener('mousemove', (event) => {
-            console.log(event.screenX)
-            this.camera.rotation.y += 0.001;
-        })
     }
 }
 
