@@ -15,10 +15,10 @@ const renderer = createRenderer(); renderer.setSize( document.querySelector('.sc
 addObjects(scene);
 
 // Ajouter le joueur 
-new Player(camera);
+const player = new Player(camera);
 
 // Animer
-animate(scene, camera, renderer);
+animate(scene, camera, renderer, player);
 
 // Resize
 resize(renderer, camera);
