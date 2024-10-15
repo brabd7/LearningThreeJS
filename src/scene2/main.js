@@ -13,14 +13,17 @@ const scene = createScene();
 const camera = createCamera(); camera.position.set(0, 1, 10);
 const renderer = createRenderer(); renderer.setSize( document.querySelector('.scenes').clientWidth, document.querySelector('.scenes').clientHeight ); document.querySelector('.scenes').appendChild( renderer.domElement );
 
+// Créer les contrôles de caméra pour vérouiller le pointeur et gérer la rotation
+const cameraControls = new PointerLockControls(camera, document.querySelector('.scenes'));
+
 // Ajouter les objets
 addObjects(scene);
 
 // Ajouter le joueur 
-const player = new Player(camera);
+const player = new Player(camera, cameraControls);
 
 // Animer
-animate(scene, camera, renderer, player);
+animate(scene, camera, renderer, player, cameraControls);
 
 // Resize
 resize(renderer, camera);

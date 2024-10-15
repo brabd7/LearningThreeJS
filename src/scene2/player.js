@@ -1,7 +1,8 @@
 export class Player {
-    constructor(camera)
+    constructor(camera, cameraControls)
     {
         this.camera = camera;
+        this.cameraControls = cameraControls;
 
         // Variables pour les mouvements
         this.moveForward = false;
@@ -12,6 +13,11 @@ export class Player {
         
         // Mouvement
         this.activateMove();
+
+        // Verrouiller le pointeur quand le joueur est créé afin que la souris contrôle la caméra
+        document.addEventListener('click', () => {
+            this.cameraControls.lock();
+        });
     }
 
     activateMove()
