@@ -4,6 +4,7 @@ export function addObjects(scene)
 {
     createSquare(scene);
     createFloor(scene);
+    createSquare1(scene);
 }
 
 function createSquare(scene)
@@ -14,6 +15,20 @@ function createSquare(scene)
 
     // Position du cube
     cube.position.y += 0.5;
+
+    // Ajouter le cube à la scène
+    scene.add(cube);
+}
+
+function createSquare1(scene)
+{
+    const geometry = new THREE.BoxGeometry(1, 2, 1);
+    const material = new THREE.MeshBasicMaterial({ color: 0xfffff }); 
+    const cube = new THREE.Mesh(geometry, material); 
+
+    // Position du cube
+    cube.position.y += 0.5;
+    cube.position.z += 15;
 
     // Ajouter le cube à la scène
     scene.add(cube);

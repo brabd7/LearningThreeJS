@@ -1,15 +1,16 @@
 export class Player {
-    constructor(camera, cameraControls)
+    constructor(camera, cameraControls, vector3)
     {
         this.camera = camera;
         this.cameraControls = cameraControls;
+        this.vector3 = vector3;
 
         // Variables pour les mouvements
         this.moveForward = false;
         this.moveBackward = false;
         this.moveRight = false;
         this.moveLeft = false;
-        this.moveSpeed = 0.2;
+        this.moveSpeed = 0.04;
         
         // Mouvement
         this.activateMove();
@@ -67,6 +68,7 @@ export class Player {
 
     move()
     {
+        console.log(this.camera.getWorldDirection(this.vector3).x)
         if (this.moveForward) this.camera.position.z -= this.moveSpeed;
         if (this.moveLeft) this.camera.position.x -= this.moveSpeed;
         if (this.moveRight) this.camera.position.x += this.moveSpeed;
