@@ -8,7 +8,7 @@ import { addObjects } from './objects';
 // Créer la scène, la caméra et le rendu
 const scene = createScene();
 const camera = createCamera(); camera.position.set(0, 0, 5);
-const renderer = createRenderer(); renderer.setSize( document.querySelector('.scene1').clientWidth, document.querySelector('.scene1').clientHeight ); document.querySelector('.scene1').appendChild( renderer.domElement );
+const renderer = createRenderer(); renderer.setSize( document.querySelector('.scenes').clientWidth, document.querySelector('.scenes').clientHeight ); document.querySelector('.scenes').appendChild( renderer.domElement );
 
 addObjects(scene);
 
