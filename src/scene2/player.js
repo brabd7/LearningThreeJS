@@ -10,6 +10,9 @@ export class Player {
 
         // Mouvement
         this.activateMove();
+
+        // Rotation de la caméra
+        this.rotationCamera();
     }
 
     activateMove()
@@ -63,6 +66,14 @@ export class Player {
         if (this.moveLeft) this.camera.position.x -= this.moveSpeed;
         if (this.moveRight) this.camera.position.x += this.moveSpeed;
         if (this.moveBackward) this.camera.position.z += this.moveSpeed;
+    }
+
+    rotationCamera()
+    {
+        document.addEventListener('mousemove', (event) => {
+            console.log(event.screenX)
+            this.camera.rotation.y += 0.001;
+        })
     }
 }
 
