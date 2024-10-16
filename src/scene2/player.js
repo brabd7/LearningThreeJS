@@ -10,7 +10,7 @@ export class Player {
         this.moveBackward = false;
         this.moveRight = false;
         this.moveLeft = false;
-        this.moveSpeed = 0.04;
+        this.moveSpeed = 0.1
         
         // Mouvement
         this.activateMove();
@@ -68,11 +68,21 @@ export class Player {
 
     move()
     {
-        // console.log(this.camera.getWorldDirection(this.vector3).x)
-        if (this.moveForward) this.camera.position.z -= this.moveSpeed;
-        if (this.moveLeft) this.camera.position.x -= this.moveSpeed;
-        if (this.moveRight) this.camera.position.x += this.moveSpeed;
-        if (this.moveBackward) this.camera.position.z += this.moveSpeed;
+        // On obtient la direction la direction dans laquelle la caméra regarde, et on la stocke dans this.vector3
+        this.camera.getWorldDirection(this.vector3);
+        
+        // Ignorer la composante Y pour ne pas voler (monter en l'air)
+        this.vector3.y = 0;
+
+        // Selon l'axe de la caméra
+        if (this.moveForward) this.camera.position.add(this.vector3.multiplyScalar(this.moveSpeed));
+        if (this.moveBackward) this.camera.position.add(this.vector3.multiplyScalar(-this.moveSpeed));
+        
+        // Selon l'axe de la scène
+        // if (this.moveForward) this.camera.position.z -= this.moveSpeed;
+        // if (this.moveLeft) this.camera.position.x -= this.moveSpeed;
+        // if (this.moveRight) this.camera.position.x += this.moveSpeed;
+        // if (this.moveBackward) this.camera.position.z += this.moveSpeed;
     }
 }
 
