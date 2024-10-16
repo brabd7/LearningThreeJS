@@ -1,3 +1,5 @@
+import { Vector3 } from 'three';
+
 export class Player {
     constructor(camera, cameraControls, vector3)
     {
@@ -77,10 +79,15 @@ export class Player {
         // Normaliser le vector3 pour toujours avoir la même vitesse
         this.vector3.normalize();
 
+        // Pour la droite et la gauche, on doit créer un vector de notre vector actuel
+        const rightVector = new Vector3();
+        rightVector.crossVectors(this.vector3, new Vector3(0, 1, 0));
+
         // Selon l'axe de la caméra
         if (this.moveForward) this.camera.position.add(this.vector3.multiplyScalar(this.moveSpeed));
         if (this.moveBackward) this.camera.position.add(this.vector3.multiplyScalar(-this.moveSpeed));
-        if (this.moveRight) this.camera.position.x += this.moveSpeed;
+        if (this.moveRight) this.camera.position.add(rightVector.multiplyScalar(this.moveSpeed));    
+        if (this.moveLeft) this.camera.position.add(rightVector.multiplyScalar(-this.moveSpeed));            
         
         // Selon l'axe de la scène
         // if (this.moveForward) this.camera.position.z -= this.moveSpeed;
