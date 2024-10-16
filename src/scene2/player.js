@@ -68,7 +68,7 @@ export class Player {
 
     move()
     {
-        console.log(this.camera.getWorldDirection(this.vector3).x)
+        // console.log(this.camera.getWorldDirection(this.vector3).x)
         if (this.moveForward) this.camera.position.z -= this.moveSpeed;
         if (this.moveLeft) this.camera.position.x -= this.moveSpeed;
         if (this.moveRight) this.camera.position.x += this.moveSpeed;
