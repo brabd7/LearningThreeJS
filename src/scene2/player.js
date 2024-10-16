@@ -74,9 +74,13 @@ export class Player {
         // Ignorer la composante Y pour ne pas voler (monter en l'air)
         this.vector3.y = 0;
 
+        // Normaliser le vector3 pour toujours avoir la même vitesse
+        this.vector3.normalize();
+
         // Selon l'axe de la caméra
         if (this.moveForward) this.camera.position.add(this.vector3.multiplyScalar(this.moveSpeed));
         if (this.moveBackward) this.camera.position.add(this.vector3.multiplyScalar(-this.moveSpeed));
+        if (this.moveRight) this.camera.position.x += this.moveSpeed;
         
         // Selon l'axe de la scène
         // if (this.moveForward) this.camera.position.z -= this.moveSpeed;
