@@ -89,6 +89,7 @@ export class Player {
         if (this.moveRight) this.camera.position.add(rightVector.multiplyScalar(this.moveSpeed));    
         if (this.moveLeft) this.camera.position.add(rightVector.multiplyScalar(-this.moveSpeed));            
         
+        
         // Selon l'axe de la scène
         // if (this.moveForward) this.camera.position.z -= this.moveSpeed;
         // if (this.moveLeft) this.camera.position.x -= this.moveSpeed;
