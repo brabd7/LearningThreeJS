@@ -2,8 +2,8 @@ import * as THREE from 'three';
 
 export function addObjects(scene)
 {
-    createSquare(scene);
     createFloor(scene);
+    createSquare(scene);
     createSquare1(scene);
 }
 

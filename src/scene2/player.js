@@ -12,7 +12,7 @@ export class Player {
         this.moveBackward = false;
         this.moveRight = false;
         this.moveLeft = false;
-        this.moveSpeed = 0.1
+        this.moveSpeed = 0.1;
         
         // Mouvement
         this.activateMove();
@@ -81,14 +81,13 @@ export class Player {
 
         // Pour la droite et la gauche, on doit créer un vector de notre vector actuel
         const rightVector = new Vector3();
-        rightVector.crossVectors(this.vector3, new Vector3(0, 1, 0));
+        rightVector.crossVectors(this.vector3, new Vector3(0, 1, 0)).normalize();
 
         // Selon l'axe de la caméra
         if (this.moveForward) this.camera.position.add(this.vector3.multiplyScalar(this.moveSpeed));
         if (this.moveBackward) this.camera.position.add(this.vector3.multiplyScalar(-this.moveSpeed));
         if (this.moveRight) this.camera.position.add(rightVector.multiplyScalar(this.moveSpeed));    
         if (this.moveLeft) this.camera.position.add(rightVector.multiplyScalar(-this.moveSpeed));            
-        
         
         // Selon l'axe de la scène
         // if (this.moveForward) this.camera.position.z -= this.moveSpeed;

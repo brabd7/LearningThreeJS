@@ -10,11 +10,11 @@ import { Vector3 } from 'three';
 
 // Créer la scène, la caméra et le rendu
 const scene = createScene();
-const camera = createCamera(); camera.position.set(0, 1, 10);
-const renderer = createRenderer(); renderer.setSize( document.querySelector('.scenes').clientWidth, document.querySelector('.scenes').clientHeight ); document.querySelector('.scenes').appendChild( renderer.domElement );
+const camera = createCamera(); 
+const renderer = createRenderer(); 
 
 // Créer les contrôles de caméra pour vérouiller le pointeur et gérer la rotation
-const cameraControls = new PointerLockControls(camera, document.querySelector('.scenes'));
+const cameraControls = new PointerLockControls(camera, renderer.domElement);
 
 // Créer le Vector3
 const vector3 = new Vector3();
