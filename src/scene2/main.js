@@ -3,10 +3,12 @@ import { createCamera } from './camera';
 import { createRenderer } from './renderer';
 import { animate } from './animate';
 import { resize } from './resize';
-import { addObjects } from './objects';
+import { addObjects } from './threeObjects';
 import { Player } from './player';
 import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls.js'; // Vérouiller le pointeur de la souris afin que l'utilisateur puisse tourner à 360 degrés dans le jeu
 import { Vector3 } from 'three';
+import { world } from './world';
+import { addCannonObjects } from './cannonObjects';
 
 // Créer la scène, la caméra et le rendu
 const scene = createScene();
@@ -19,14 +21,17 @@ const cameraControls = new PointerLockControls(camera, renderer.domElement);
 // Créer le Vector3
 const vector3 = new Vector3();
 
-// Ajouter les objets
+// Ajouter les objets three
 addObjects(scene);
+
+// Ajouter les objets cannon
+addCannonObjects(world);
 
 // Ajouter le joueur 
 const player = new Player(camera, cameraControls, vector3);
 
 // Animer
-animate(scene, camera, renderer, player, cameraControls);
+animate(scene, camera, renderer, player, cameraControls, world);
 
 // Resize
 resize(renderer, camera);
