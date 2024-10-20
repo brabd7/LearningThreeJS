@@ -5,7 +5,7 @@ export class Player {
     {
         this.camera = camera;
         this.cameraControls = cameraControls;
-        this.vector3 = vector3;
+        this.vector3 = new Vector3();
 
         // Variables pour les mouvements
         this.moveForward = false;
@@ -88,12 +88,6 @@ export class Player {
         if (this.moveBackward) this.camera.position.add(this.vector3.multiplyScalar(-this.moveSpeed));
         if (this.moveRight) this.camera.position.add(rightVector.multiplyScalar(this.moveSpeed));    
         if (this.moveLeft) this.camera.position.add(rightVector.multiplyScalar(-this.moveSpeed));            
-        
-        // Selon l'axe de la scène
-        // if (this.moveForward) this.camera.position.z -= this.moveSpeed;
-        // if (this.moveLeft) this.camera.position.x -= this.moveSpeed;
-        // if (this.moveRight) this.camera.position.x += this.moveSpeed;
-        // if (this.moveBackward) this.camera.position.z += this.moveSpeed;
     }
 }
 

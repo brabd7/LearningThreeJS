@@ -1,14 +1,20 @@
-import { createScene } from './scene';
-import { createCamera } from './camera';
-import { createRenderer } from './renderer';
-import { animate } from './animate';
-import { resize } from './resize';
-import { addObjects } from './threeObjects';
+// Fichiers d'initialisation
+import { createScene } from './init/scene';
+import { createCamera } from './init/camera';
+import { resize } from './init/resize';
+import { createRenderer } from './init/renderer';
+import { animate } from './init/animate';
+import { stats } from './init/stats';
+
+// Les classes
 import { Player } from './player';
+
+// Les autres modules
 import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls.js'; // Vérouiller le pointeur de la souris afin que l'utilisateur puisse tourner à 360 degrés dans le jeu
-import { Vector3 } from 'three';
-import { world } from './world';
-import { addCannonObjects } from './cannonObjects';
+
+// Le monde physique et le monde three
+import { world } from './_cannonBody/cannonWorld';
+import { threeWorld } from './_threeObjects/threeWorld';
 
 // Créer la scène, la caméra et le rendu
 const scene = createScene();
@@ -18,20 +24,14 @@ const renderer = createRenderer();
 // Créer les contrôles de caméra pour vérouiller le pointeur et gérer la rotation
 const cameraControls = new PointerLockControls(camera, renderer.domElement);
 
-// Créer le Vector3
-const vector3 = new Vector3();
-
-// Ajouter les objets three
-addObjects(scene);
-
-// Ajouter les objets cannon
-addCannonObjects(world);
+// threeWorld
+threeWorld(scene);
 
 // Ajouter le joueur 
-const player = new Player(camera, cameraControls, vector3);
+const player = new Player(camera, cameraControls);
 
 // Animer
-animate(scene, camera, renderer, player, cameraControls, world);
+animate(scene, camera, renderer, player, cameraControls, world, stats);
 
 // Resize
 resize(renderer, camera);
