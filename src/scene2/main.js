@@ -14,7 +14,8 @@ import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockCont
 
 // Le monde physique et le monde three
 import { world } from './_cannonBody/cannonWorld';
-import { threeWorld } from './_threeObjects/threeWorld';
+import { threeWorld } from './_threeMesh/threeWorld';
+import { synchronize } from './synchronize';
 
 // Créer la scène, la caméra et le rendu
 const scene = createScene();
@@ -31,7 +32,7 @@ threeWorld(scene);
 const player = new Player(camera, cameraControls);
 
 // Animer
-animate(scene, camera, renderer, player, cameraControls, world, stats);
+animate(scene, camera, renderer, player, cameraControls, world, stats, synchronize);
 
 // Resize
 resize(renderer, camera);
