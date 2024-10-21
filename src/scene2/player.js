@@ -84,6 +84,7 @@ export class Player {
         const rightVector = new Vector3();
         rightVector.crossVectors(this.vector3, new Vector3(0, 1, 0)).normalize();
 
+        // La vélocité du corps de notre joueur
         const velocity = this.playerBody.velocity;
 
         // Selon l'axe de la caméra
@@ -107,6 +108,7 @@ export class Player {
             velocity.z -= rightVector.z * this.moveSpeed;
         }
     
+        // La caméra recopie constamment la position du corps de notre joueur
         this.camera.position.copy(this.playerBody.position);
     }
 }
