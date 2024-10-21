@@ -16,6 +16,7 @@ import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockCont
 import { world } from './_cannonBody/cannonWorld';
 import { threeWorld } from './_threeMesh/threeWorld';
 import { synchronize } from './synchronize';
+import { playerBody } from './_cannonBody/cannonPlayer';
 
 // Créer la scène, la caméra et le rendu
 const scene = createScene();
@@ -29,7 +30,7 @@ const cameraControls = new PointerLockControls(camera, renderer.domElement);
 threeWorld(scene);
 
 // Ajouter le joueur 
-const player = new Player(camera, cameraControls);
+const player = new Player(camera, cameraControls, playerBody);
 
 // Animer
 animate(scene, camera, renderer, player, cameraControls, world, stats, synchronize);
