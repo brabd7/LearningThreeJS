@@ -4,7 +4,7 @@ const playerBody = new CANNON.Body({
     mass: 1,
 
     // Position initiale du corps du joueur
-    position: new CANNON.Vec3(0, 1, 0),
+    position: new CANNON.Vec3(0, 1, 5),
 
     // Corps sphérique pour le joueur
     shape: new CANNON.Sphere(1)

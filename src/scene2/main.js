@@ -1,5 +1,5 @@
 // Fichiers d'initialisation
-import { createScene } from './init/scene';
+import { scene } from './init/scene';
 import { createCamera } from './init/camera';
 import { resize } from './init/resize';
 import { createRenderer } from './init/renderer';
@@ -18,8 +18,10 @@ import { threeWorld } from './_threeMesh/threeWorld';
 import { synchronize } from './synchronize';
 import { playerBody } from './_cannonBody/cannonPlayer';
 
+// Importer les modèles 3D
+import './_models/modelGun';
+
 // Créer la scène, la caméra et le rendu
-const scene = createScene();
 const camera = createCamera(); 
 const renderer = createRenderer(); 
 

@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 
 // Création de la géométrie du sol
-const geometry = new THREE.PlaneGeometry(25, 25); // Un plan de 10x10 unités
+const geometry = new THREE.PlaneGeometry(25, 25);
 
 // Création d'une texture
 const textureLoader = new THREE.TextureLoader();
