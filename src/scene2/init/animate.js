@@ -1,29 +1,39 @@
-export function animate(scene, camera, renderer, player, cameraControls, world, stats, synchronize)
+import * as THREE from 'three';
+
+export function animate(scene, camera, renderer, player, cameraControls, world, stats, synchronize, loadGunModel, playerBody)
 {
-    function updateAnimation()
-    {
-        // Commence le suivi des performances
-        stats.begin();
+    loadGunModel()
+    .then((gunModel) => {
+        function updateAnimation()
+        {
+            // Commence le suivi des performances
+            stats.begin();
 
-        requestAnimationFrame(updateAnimation);
+            requestAnimationFrame(updateAnimation);
 
-        // Mouvement du joueur
-        player.move();
+            // Mouvement du joueur
+            player.move();
 
-        // Mettre à jour la simulation physique du monde
-        world.step(1 / 60);
+            // L'arme suit le joueur mais aussi tourne en fonction de la caméra
+            gunModel.position.copy(playerBody.position).add(new THREE.Vector3(0.25, -0.92, 1.05));
 
-        // Synchroniser les corps et les mesh ensemble
-        synchronize();
+            // Mettre à jour la simulation physique du monde
+            world.step(1 / 60);
 
-        // Met à jour les rotations de la caméra
-        cameraControls.update();
+            // Synchroniser les corps et les mesh ensemble
+            synchronize();
 
-        renderer.render(scene, camera);
+            // Met à jour les rotations de la caméra
+            cameraControls.update();
 
-        // Fin du suivi des performances
-        stats.end();
-    }
+            // Rendu
+            renderer.render(scene, camera);
 
-    updateAnimation();
+
+            // Fin du suivi des performances
+            stats.end();
+        }
+
+        updateAnimation();
+    })
 }
