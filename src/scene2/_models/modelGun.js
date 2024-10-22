@@ -8,13 +8,13 @@ import { playerBody } from '../_cannonBody/cannonPlayer';
 const loaderGun = new GLTFLoader();
 
 loaderGun.load('../../../assets/sci-fi_gun_model/scene.gltf', (gltf) => {
+    // L'ajouter à la scène
     scene.add(gltf.scene);
     
-    // Créez un vecteur d'offset
-    const offset = new THREE.Vector3(0, 0, -10); // Ajustez ces valeurs pour positionner correctement l'arme
-    gltf.scene.position.copy(playerBody).add(offset);
+    // La position de l'arme
+    gltf.scene.rotation.y = -Math.PI / 2; 
+    gltf.scene.position.copy(playerBody.position).add(new THREE.Vector3(0.25, -0.92, 1.05));
     
-    console.log('ok');
 }, undefined, (error) => {
     console.error(error);
 });

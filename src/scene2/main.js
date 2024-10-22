@@ -5,6 +5,7 @@ import { resize } from './init/resize';
 import { createRenderer } from './init/renderer';
 import { animate } from './init/animate';
 import { stats } from './init/stats';
+import { setupLighting } from './init/light';
 
 // Les classes
 import { Player } from './player';
@@ -30,6 +31,9 @@ const cameraControls = new PointerLockControls(camera, renderer.domElement);
 
 // threeWorld
 threeWorld(scene);
+
+// La lumière
+setupLighting(scene);
 
 // Ajouter le joueur 
 const player = new Player(camera, cameraControls, playerBody);
