@@ -1,6 +1,6 @@
 // Fichiers d'initialisation
 import { scene } from './init/scene';
-import { camera } from './init/camera';
+import { createCamera } from './init/camera';
 import { resize } from './init/resize';
 import { createRenderer } from './init/renderer';
 import { animate } from './init/animate';
@@ -23,6 +23,7 @@ import { playerBody } from './_cannonBody/cannonPlayer';
 import { loadGunModel } from './_models/modelGun';
 
 // Créer la scène, la caméra et le rendu
+const camera = createCamera();
 const renderer = createRenderer(); 
 
 // Créer les contrôles de caméra pour vérouiller le pointeur et gérer la rotation
