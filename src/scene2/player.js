@@ -122,7 +122,7 @@ export class Player {
         document.addEventListener('mousedown', (event) => {
             if (event.button == 0)
             {
-                createBullets(this.scene, this.playerBody);
+                createBullets(this.scene, this.camera);
             }
         })
     }
