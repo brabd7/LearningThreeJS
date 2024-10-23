@@ -21,9 +21,6 @@ export function animate(scene, camera, renderer, player, cameraControls, world, 
             // Mouvement du joueur
             player.move();
 
-            // L'arme suit la caméra automatiquement puisqu'elle est attachée à la caméra.
-            // Vous n'avez donc plus besoin de mettre à jour manuellement la position ou la rotation.
-
             // Mettre à jour la simulation physique du monde
             world.step(1 / 60);
 

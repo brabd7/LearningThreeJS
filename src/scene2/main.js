@@ -36,7 +36,7 @@ threeWorld(scene);
 setupLighting(scene);
 
 // Ajouter le joueur 
-const player = new Player(camera, cameraControls, playerBody);
+const player = new Player(camera, cameraControls, playerBody, scene);
 
 // Animer
 animate(scene, camera, renderer, player, cameraControls, world, stats, synchronize, loadGunModel, playerBody);

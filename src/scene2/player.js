@@ -1,12 +1,14 @@
 import { Vector3 } from 'three';
+import { createBullets } from './_threeMesh/threeBullets';
 
 export class Player {
-    constructor(camera, cameraControls, playerBody)
+    constructor(camera, cameraControls, playerBody, scene)
     {
         this.camera = camera;
         this.cameraControls = cameraControls;
         this.vector3 = new Vector3();
         this.playerBody = playerBody;
+        this.scene = scene;
 
         // Variables pour les mouvements
         this.moveForward = false;
@@ -17,6 +19,9 @@ export class Player {
         
         // Mouvement
         this.activateMove();
+
+        // Shoot
+        this.shoot();
 
         // Verrouiller le pointeur quand le joueur est créé afin que la souris contrôle la caméra
         document.addEventListener('click', () => {
@@ -110,6 +115,16 @@ export class Player {
     
         // La caméra recopie constamment la position du corps de notre joueur
         this.camera.position.copy(this.playerBody.position);
+    }
+
+    shoot()
+    {
+        document.addEventListener('mousedown', (event) => {
+            if (event.button == 0)
+            {
+                createBullets(this.scene, this.playerBody);
+            }
+        })
     }
 }
 
