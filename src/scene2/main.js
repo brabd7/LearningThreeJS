@@ -22,6 +22,8 @@ import { playerBody } from './_cannonBody/cannonPlayer';
 // Importer les modèles 3D
 import { loadGunModel } from './_models/modelGun';
 
+import { bullets } from './_threeMesh/threeBullets';
+
 // Créer la scène, la caméra et le rendu
 const camera = createCamera();
 const renderer = createRenderer(); 
@@ -36,10 +38,10 @@ threeWorld(scene);
 setupLighting(scene);
 
 // Ajouter le joueur 
-const player = new Player(camera, cameraControls, playerBody, scene);
+const player = new Player(camera, cameraControls, playerBody, scene, world);
 
 // Animer
-animate(scene, camera, renderer, player, cameraControls, world, stats, synchronize, loadGunModel, playerBody);
+animate(scene, camera, renderer, player, cameraControls, world, stats, synchronize, loadGunModel, bullets);
 
 // Resize
 resize(renderer, camera);

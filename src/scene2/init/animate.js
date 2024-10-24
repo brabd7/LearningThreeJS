@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 
-export function animate(scene, camera, renderer, player, cameraControls, world, stats, synchronize, loadGunModel, playerBody) {
+export function animate(scene, camera, renderer, player, cameraControls, world, stats, synchronize, loadGunModel, bullets) {
     loadGunModel()
     .then((gunModel) => {
         
@@ -8,18 +8,31 @@ export function animate(scene, camera, renderer, player, cameraControls, world, 
         camera.add(gunModel);
 
         // Placer l'arme à la position souhaitée par rapport à la caméra
-        gunModel.position.set(0.25, -0.92, 1.05);
+        gunModel.position.set(0.30, -0.92, 1.05);
+
+        // Créer un vecteur pour stocker la direction de la caméra
+        const cameraDirection = new THREE.Vector3();
 
         function updateAnimation() {
             // Commencer le suivi des performances
             stats.begin();
             requestAnimationFrame(updateAnimation);
-
+            
             // Ajouter la caméra à la scène
-            scene.add(camera)
+            scene.add(camera);
 
             // Mouvement du joueur
             player.move();
+
+            // Mouvement des balles tirées
+            bullets.forEach(bullet => {
+                // Obtenir la direction actuelle de la caméra
+                camera.getWorldDirection(cameraDirection);
+
+                // Déplacer la balle dans la direction de la caméra
+                const speed = 1;  // Vitesse à laquelle la balle avance
+                bullet.position.add(cameraDirection.clone().multiplyScalar(speed));
+            });
 
             // Mettre à jour la simulation physique du monde
             world.step(1 / 60);

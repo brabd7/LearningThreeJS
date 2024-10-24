@@ -2,13 +2,14 @@ import { Vector3 } from 'three';
 import { createBullets } from './_threeMesh/threeBullets';
 
 export class Player {
-    constructor(camera, cameraControls, playerBody, scene)
+    constructor(camera, cameraControls, playerBody, scene, world)
     {
         this.camera = camera;
         this.cameraControls = cameraControls;
         this.vector3 = new Vector3();
         this.playerBody = playerBody;
         this.scene = scene;
+        this.world = world;
 
         // Variables pour les mouvements
         this.moveForward = false;
